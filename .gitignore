@@ -1,0 +1,33 @@
+# Conda environments
+.env/
+.venv/
+env/
+venv/
+*/.env/
+*/.venv/
+*/env/
+*/venv/
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# VS Code settings
+.vscode/
+
+# Sublime Text settings
+*.sublime-workspace
+*.sublime-project
+
+# Emacs settings
+*~
+
+# Other
+.DS_Store
