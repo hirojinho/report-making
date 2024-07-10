@@ -1,4 +1,4 @@
-from typing import Any, Dict, Tuple
+from typing import Tuple
 from flask import Blueprint, Response, jsonify, request
 
 from app.routes.completion.services.completion import CompletionService
@@ -8,13 +8,11 @@ completion_service = CompletionService("phi3")
 
 @completion.route('/api/completion', methods = ['POST'])
 def generate_completion() -> Tuple[Response, int]:
-    input_data: Dict[str, str] = request.json if request.json else {}
+    input: str = request.form['user_input']
 
     # Validate input format
-    if not isinstance(input_data, dict) or 'input' not in input_data or not isinstance(input_data['input'], str):
+    if not isinstance(input, str):
         return jsonify({'error': 'Invalid data format'}), 400
-    
-    # Process input data
-    input_value = input_data['input']
-    completion = f'Processed input: {input_value}'
+
+    completion = completion_service.generate_completion(input)
     return jsonify(completion), 200
