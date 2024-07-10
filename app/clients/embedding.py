@@ -78,7 +78,7 @@ class EmbeddingClient:
         
     def search(self, question: str) -> list[str]:
         print('\n>>> Searching...')
-        docs = self.vectorstore.similarity_search(question)
+        docs = self.vectorstore.similarity_search(question, k=10)
         return [doc.page_content for doc in docs]
     
     def initiate_vector_store(self, docs: str) -> None:
